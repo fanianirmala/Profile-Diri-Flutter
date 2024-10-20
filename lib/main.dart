@@ -1,75 +1,77 @@
 import 'package:flutter/material.dart';
-import 'Page2.dart';
+import 'form.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: home(), // Halaman awal ketika program pertama dijalankan
+      home: LoginPage(),
     ));
 
-class home extends StatelessWidget {
-  // Ubah nama kelas menjadi 'home'
-  const home({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/background.jpeg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.shortestSide,
-              padding: EdgeInsets.all(20.0),
-              alignment: Alignment.center,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                color: Color(0xFFEDDFE0),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 100.0,
-                        backgroundImage: AssetImage("images/profile.jpg"),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Title Login
+              Text('Login',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account? "),
+                  GestureDetector(
+                    onTap: () {
+                    },
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
-                        "Fania Nirmala",
-                        textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontSize: 20, color: Color(0xFFC75B7A)),
-                      ),
-                      Text(
-                        "Vocational High School Student at SMK Wikrama Bogor",
-                        textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontSize: 15, color: Color(0xFFC75B7A)),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Page2()),
-                          );
-                        },
-                        child: Text('See More'),
-                      ),
-                    ],
+                    ),
                   ),
+                ],
+              ),
+              SizedBox(height: 20),
+
+              // Form Input Email
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+
+              // Form Input Password
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20),
+
+              // Button Login
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormInputPage()),
+                  );
+                },
+                child: Text('Login'),
+              ),
+            ],
+          ),
         ),
       ),
     );

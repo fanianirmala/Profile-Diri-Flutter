@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Page2 extends StatelessWidget {
+class Profile2Page extends StatelessWidget {
+  final String aboutMe;
+  final String name;
+
+  Profile2Page({required this.aboutMe, required, required this.name});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +15,7 @@ class Page2 extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.pop(context); // Mengembalikan ke halaman sebelumnya
+            Navigator.pop(context); // Kembali ke halaman sebelumnya
           },
         ),
         title: Text(
@@ -37,7 +42,7 @@ class Page2 extends StatelessWidget {
               backgroundImage: AssetImage("images/profile.jpg"),
             ),
             SizedBox(height: 10),
-            Text("Fania Nirmala",
+            Text(name,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -67,8 +72,7 @@ class Page2 extends StatelessWidget {
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(height: 10),
-                          Text(
-                              "I am a student at SMK Wikrama Bogor majoring in Software and Game Development, specializing as a Front-End Developer."),
+                          Text(aboutMe), // Deskripsi dari input
                         ],
                       ),
                     ),
@@ -100,7 +104,7 @@ class Page2 extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
 
-                  // Skill
+                  // Skill Card
                   Card(
                     elevation: 4,
                     shape: RoundedRectangleBorder(
